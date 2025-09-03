@@ -4,7 +4,13 @@ import { ArrowRight, Globe, Shield, Clock, Zap, CheckCircle, Users, Phone } from
 import Aurora from '@/components/Aurora';
 
 
-const FeatureCard = ({ icon: Icon, title, description }) => (
+interface FeatureCardProps {
+  icon: React.ComponentType<{ className?: string }>;
+  title: string;
+  description: string;
+}
+
+const FeatureCard: React.FC<FeatureCardProps> = ({ icon: Icon, title, description }) => (
   <div className="bg-white/5 backdrop-blur-sm border border-slate-200/10 rounded-xl p-6 hover:bg-white/8 transition-all duration-300">
     <div className="w-10 h-10 bg-blue-600 rounded-lg flex items-center justify-center mb-4">
       <Icon className="w-5 h-5 text-white" />
