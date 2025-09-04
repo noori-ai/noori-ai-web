@@ -1,8 +1,31 @@
-'use client';
-import { useEffect, useState } from 'react';
-import { ArrowRight, Globe, Shield, Clock, Zap, CheckCircle, Users, Phone } from 'lucide-react';
-import Aurora from '@/components/Aurora';
-
+"use client";
+import { useEffect, useState } from "react";
+import {
+  ArrowRight,
+  Globe,
+  Shield,
+  Clock,
+  Zap,
+  CheckCircle,
+  Users,
+  Phone,
+} from "lucide-react";
+import Aurora from "@/components/Aurora";
+import Image from "next/image";
+import {
+  Dialog,
+  DialogContent,
+  DialogDescription,
+  DialogHeader,
+  DialogTitle,
+  DialogTrigger,
+  DialogFooter,
+  DialogClose,
+} from "@/components/ui/dialog";
+import { Label } from "@/components/ui/label";
+import { Input } from "@/components/ui/input";
+import { Button } from "@/components/ui/button";
+import DemoForm from "./demoForm";
 
 interface FeatureCardProps {
   icon: React.ComponentType<{ className?: string }>;
@@ -10,7 +33,11 @@ interface FeatureCardProps {
   description: string;
 }
 
-const FeatureCard: React.FC<FeatureCardProps> = ({ icon: Icon, title, description }) => (
+const FeatureCard: React.FC<FeatureCardProps> = ({
+  icon: Icon,
+  title,
+  description,
+}) => (
   <div className="bg-white/5 backdrop-blur-sm border border-slate-200/10 rounded-xl p-6 hover:bg-white/8 transition-all duration-300">
     <div className="w-10 h-10 bg-blue-600 rounded-lg flex items-center justify-center mb-4">
       <Icon className="w-5 h-5 text-white" />
@@ -31,62 +58,69 @@ export default function NooriAIWebsite() {
     <div className="min-h-screen bg-slate-900 text-white relative overflow-hidden">
       {/* Aurora Background - More subtle blue tones */}
       <div className="fixed inset-0 z-0 opacity-30">
-        <Aurora 
+        <Aurora
           colorStops={["#1e40af", "#3b82f6", "#1e40af"]}
           blend={0.3}
           amplitude={0.7}
           speed={0.3}
         />
       </div>
-      
+
       <div className="relative z-10">
         {/* Header */}
         <header className="container mx-auto px-6 py-6">
           <nav className="flex justify-between items-center max-w-6xl mx-auto">
             <div className="flex items-center space-x-3">
-              <div className="w-8 h-8 bg-blue-600 rounded-lg flex items-center justify-center">
-                <Globe className="w-5 h-5 text-white" />
+              <div className="w-8 h-8 rounded-lg flex items-center justify-center">
+                <Image
+                  src="/noori-icon.svg"
+                  alt="Noori Logo"
+                  width={200}
+                  height={200}
+                />
               </div>
               <span className="text-xl font-semibold">Noori AI</span>
             </div>
-            <button className="bg-blue-600 hover:bg-blue-700 px-6 py-2 rounded-lg transition-colors duration-200 text-sm font-medium">
-              Request Demo
-            </button>
+            <DemoForm>
+              <button className="bg-blue-600 hover:bg-blue-700 px-6 py-2 rounded-lg transition-colors duration-200 text-sm font-medium">
+                Request Demo
+              </button>
+            </DemoForm>
           </nav>
         </header>
 
         {/* Hero Section */}
         <section className="container mx-auto px-6 py-20">
-          <div className={`max-w-4xl mx-auto text-center transition-all duration-1000 ${
-            isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'
-          }`}>
+          <div
+            className={`max-w-4xl mx-auto text-center transition-all duration-1000 ${
+              isVisible
+                ? "opacity-100 translate-y-0"
+                : "opacity-0 translate-y-8"
+            }`}
+          >
             <div className="inline-block bg-slate-800/50 backdrop-blur-sm border border-slate-600/30 px-4 py-2 rounded-full text-sm mb-12 text-slate-300">
               Medical AI Translation Platform
             </div>
-            
+
             <h1 className="text-5xl md:text-6xl font-bold mb-8 leading-tight">
-              <span className="text-white">
-                Real-Time Medical
-              </span>
+              <span className="text-white">Real-Time Medical</span>
               <br />
-              <span className="text-blue-400">
-                Translation
-              </span>
+              <span className="text-blue-400">Translation</span>
             </h1>
-            
+
             <p className="text-lg text-slate-300 mb-12 leading-relaxed max-w-2xl mx-auto">
-              HIPAA-compliant, offline AI interpreter designed specifically for clinical settings. 
-              Accurate medical terminology translation available 24/7.
+              HIPAA-compliant, offline AI interpreter designed specifically for
+              clinical settings. Accurate medical terminology translation
+              available 24/7.
             </p>
-            
+
             <div className="flex flex-col sm:flex-row gap-4 justify-center items-center">
-              <button className="bg-blue-600 hover:bg-blue-700 px-8 py-3 rounded-lg font-medium transition-colors duration-200 flex items-center space-x-2">
-                <span>Start Trial</span>
-                <ArrowRight className="w-4 h-4" />
-              </button>
-              <button className="border border-slate-600 hover:border-slate-500 px-8 py-3 rounded-lg font-medium transition-colors duration-200">
-                View Demo
-              </button>
+              <DemoForm>
+                <button className="bg-blue-600 hover:bg-blue-700 px-8 py-3 rounded-lg font-medium transition-colors duration-200 flex items-center space-x-2">
+                  <span>Request Demo</span>
+                  <ArrowRight className="w-4 h-4" />
+                </button>
+              </DemoForm>
             </div>
           </div>
         </section>
@@ -99,7 +133,9 @@ export default function NooriAIWebsite() {
               <div className="text-slate-300 text-sm">Always Available</div>
             </div>
             <div>
-              <div className="text-3xl font-bold text-blue-400 mb-2">Offline</div>
+              <div className="text-3xl font-bold text-blue-400 mb-2">
+                Offline
+              </div>
               <div className="text-slate-300 text-sm">No Internet Required</div>
             </div>
             <div>
@@ -117,10 +153,11 @@ export default function NooriAIWebsite() {
                 Built for Healthcare
               </h2>
               <p className="text-slate-300 max-w-2xl mx-auto">
-                Every feature designed specifically for medical environments and patient safety
+                Every feature designed specifically for medical environments and
+                patient safety
               </p>
             </div>
-            
+
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
               <FeatureCard
                 icon={Shield}
@@ -165,7 +202,9 @@ export default function NooriAIWebsite() {
               </h2>
               <div className="grid md:grid-cols-2 gap-12">
                 <div>
-                  <h3 className="text-lg font-semibold mb-4 text-slate-300">Current Challenges</h3>
+                  <h3 className="text-lg font-semibold mb-4 text-slate-300">
+                    Current Challenges
+                  </h3>
                   <div className="space-y-3 text-slate-400 text-sm">
                     <div>• Limited interpreter availability</div>
                     <div>• High operational costs</div>
@@ -174,7 +213,9 @@ export default function NooriAIWebsite() {
                   </div>
                 </div>
                 <div>
-                  <h3 className="text-lg font-semibold mb-4 text-slate-300">Our Solution</h3>
+                  <h3 className="text-lg font-semibold mb-4 text-slate-300">
+                    Our Solution
+                  </h3>
                   <div className="space-y-3 text-slate-400 text-sm">
                     <div>• Instant medical translation</div>
                     <div>• Cost-effective annual subscription</div>
@@ -187,40 +228,21 @@ export default function NooriAIWebsite() {
           </div>
         </section>
 
-        {/* CTA */}
-        <section className="container mx-auto px-6 py-20">
-          <div className="max-w-3xl mx-auto text-center">
-            <h2 className="text-3xl md:text-4xl font-bold mb-6 text-white">
-              Ready to Improve Patient Communication?
-            </h2>
-            <p className="text-lg text-slate-300 mb-10">
-              Join healthcare institutions already using Noori AI for better patient outcomes.
-            </p>
-            <div className="flex flex-col sm:flex-row gap-4 justify-center">
-              <button className="bg-blue-600 hover:bg-blue-700 px-8 py-4 rounded-lg font-medium transition-colors duration-200 flex items-center justify-center space-x-2">
-                <span>Request Pilot Study</span>
-                <ArrowRight className="w-4 h-4" />
-              </button>
-              <button className="border border-slate-600 hover:border-slate-500 px-8 py-4 rounded-lg font-medium transition-colors duration-200 flex items-center justify-center space-x-2">
-                <Phone className="w-4 h-4" />
-                <span>Schedule Demo</span>
-              </button>
-            </div>
-          </div>
-        </section>
-
         {/* Footer */}
         <footer className="container mx-auto px-6 py-12 border-t border-slate-700/50">
           <div className="max-w-4xl mx-auto flex flex-col md:flex-row justify-between items-center">
             <div className="flex items-center space-x-3 mb-6 md:mb-0">
-              <div className="w-8 h-8 bg-blue-600 rounded-lg flex items-center justify-center">
-                <Globe className="w-5 h-5 text-white" />
+              <div className="w-8 h-8 rounded-lg flex items-center justify-center">
+                <Image
+                  src="/noori-icon.svg"
+                  alt="Noori Logo"
+                  width={200}
+                  height={200}
+                />
               </div>
               <span className="text-xl font-semibold">Noori AI</span>
             </div>
-            <div className="text-slate-400 text-sm">
-              © 2024 Noori AI. Medical translation technology.
-            </div>
+            <div className="text-slate-400 text-sm">© 2024 Noori AI.</div>
           </div>
         </footer>
       </div>
