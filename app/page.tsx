@@ -55,14 +55,14 @@ export default function NooriAIWebsite() {
   }, []);
 
   return (
-    <div className="min-h-screen bg-slate-900 text-white relative overflow-hidden">
+    <div className="min-h-screen bg-black text-white relative overflow-hidden">
       {/* Aurora Background - More subtle blue tones */}
-      <div className="fixed inset-0 z-0 opacity-30">
+      <div className="fixed inset-0 z-0">
         <Aurora
-          colorStops={["#1e40af", "#3b82f6", "#1e40af"]}
+          colorStops={["#14284f", "#b19eef", "#5227ff"]}
           blend={0.3}
           amplitude={0.7}
-          speed={0.3}
+          speed={1}
         />
       </div>
 
@@ -79,7 +79,7 @@ export default function NooriAIWebsite() {
                   height={200}
                 />
               </div>
-              <span className="text-xl font-semibold">Noori AI</span>
+              <span className="text-2xl font-semibold">Noori AI</span>
             </div>
             <DemoForm>
               <button className="bg-blue-600 hover:bg-blue-700 px-6 py-2 rounded-lg transition-colors duration-200 text-sm font-medium">
@@ -102,7 +102,7 @@ export default function NooriAIWebsite() {
             <h1 className="text-5xl md:text-6xl font-bold mb-8 leading-tight">
               <span className="text-white">Real-Time Medical</span>
               <br />
-              <span className="text-blue-400">Translation</span>
+              <span className="text-blue-400">Interpretation</span>
             </h1>
 
             <p className="text-lg text-slate-300 mb-12 leading-relaxed max-w-2xl mx-auto">
