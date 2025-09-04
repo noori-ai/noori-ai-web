@@ -98,9 +98,6 @@ export default function NooriAIWebsite() {
                 : "opacity-0 translate-y-8"
             }`}
           >
-            <div className="inline-block bg-slate-800/50 backdrop-blur-sm border border-slate-600/30 px-4 py-2 rounded-full text-sm mb-12 text-slate-300">
-              Medical AI Translation Platform
-            </div>
 
             <h1 className="text-5xl md:text-6xl font-bold mb-8 leading-tight">
               <span className="text-white">Real-Time Medical</span>
